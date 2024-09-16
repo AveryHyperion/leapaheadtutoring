@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After School Program - Leap Ahead Tutoring</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1em;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .container {
+            padding: 0;
+            margin: 0;
+        }
+
+        .section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            padding: 40px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .section p, .section ul {
+            font-size: 1.2em;
+            line-height: 1.6em;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        .section-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .section-bg {
+            background-size: cover;
+            background-position: center;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .section.bg-classes {
+            background-image: url('Images/Classes.jpg');
+        }
+
+        .section.bg-tutoring {
+            background-image: url('Images/Tutoring.jpg');
+        }
+
+        .section.bg-prekindy {
+            background-image: url('Images/Pre-Kindy.jpg');
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        /* Login and Signup Button Styles */
+        #login-signup-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        #login-signup-buttons button {
+            padding: 15px 30px; /* Adjust padding to increase button size */
+            font-size: 1.2em;   /* Increase font size */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #login-signup-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .section p, .section ul {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login and Signup Buttons -->
+    <div id="login-signup-buttons">
+        <button id="login-button">Login</button>
+        <button id="signup-button">Sign Up</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Leap Ahead Tutoring</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="schedules.html">Schedules</a>
+            <a href="enrichment.html">Enrichment</a>
+            <a href="acedemic.html">Acedemic Success</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Classes Section -->
+        <section class="section section-bg bg-classes">
+            <div class="section-overlay"></div>
+            <div class="section-content">
+                <h2>Classes</h2>
+                <p>Our after school programs are designed to provide students with additional support and enrichment after their regular school hours. The program includes:</p>
+                <ul>
+                    <li><strong>Homework Assistance:</strong> Help with completing and understanding homework assignments.</li>
+                    <li><strong>Interactive Learning:</strong> Engaging activities that reinforce classroom learning and foster new skills.</li>
+                    <li><strong>Social Development:</strong> Activities that promote teamwork, communication, and social skills.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- After School, Saturday, and School Holiday Tutoring Section -->
+        <section class="section section-bg bg-tutoring">
+            <div class="section-overlay"></div>
+            <div class="section-content">
+                <h2>After School, Saturday, and School Holiday Tutoring</h2>
+                <p>We offer tutoring sessions in both English and Maths at an affordable rate. Sessions are available after school, on Saturdays, and during school holidays. Each student receives individualized materials tailored to their learning needs.</p>
+                <p>Whether your child is struggling, keeping up, or looking for acceleration, our classes welcome all students. The program provides an opportunity for every learner to advance in a supportive and enriching environment.</p>
+            </div>
+        </section>
+
+        <!-- Pre-kindy Readiness Program Section -->
+        <section class="section section-bg bg-prekindy">
+            <div class="section-overlay"></div>
+            <div class="section-content">
+                <h2>Pre-kindy Readiness Program</h2>
+                <p>Our preschool program is designed for children aged 4-5 years old. We offer daily or weekly lesson plans that focus on early literacy, Maths, and kindy-prep skills. Perfect for parents looking to give their children a head start in Maths and English before formal schooling begins.</p>
+                <p>Children are assessed upon enrollment to evaluate their skills and knowledge before starting our program, ensuring they receive the appropriate level of instruction to excel.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Leap Ahead Tutoring. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

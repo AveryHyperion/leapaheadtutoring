@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Leap Ahead Tutoring</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1em;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            background: #e0f7fa;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .faq-item:hover {
+            background-color: #b2ebf2;
+            transform: scale(1.02);
+        }
+
+        .faq-question {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .faq-answer {
+            margin: 10px 0 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #222;
+            color: #ccc;
+        }
+
+        body.dark-mode header {
+            background-color: #333;
+        }
+
+        body.dark-mode nav a {
+            background-color: #555;
+            color: white;
+        }
+
+        body.dark-mode nav a:hover {
+            background-color: #777;
+        }
+
+        body.dark-mode .section {
+            background-color: #333;
+            color: #ccc;
+        }
+
+        body.dark-mode footer {
+            background-color: #111;
+        }
+
+        /* Login and Sign-Up Buttons */
+        #login-signup-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        #login-signup-buttons button {
+            padding: 15px 30px; /* Adjust padding to increase button size */
+            font-size: 1.2em;   /* Increase font size */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #login-signup-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login and Sign-Up Buttons -->
+    <div id="login-signup-buttons">
+        <button onclick="window.location.href='login.html'">Login</button>
+        <button onclick="window.location.href='signup.html'">Sign Up</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Leap Ahead Tutoring</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="schedules.html">Schedules</a>
+            <a href="enrichment.html">Enrichment</a>
+            <a href="acedemic.html">Acedemic Success</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <section class="section">
+            <h2>FAQ</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <p class="faq-question">What is the right age for my child to enroll in Leap Ahead Tutoring?</p>
+                    <p class="faq-answer">We provide tutoring for all ages from preschool to senior high school. Our programs are tailored to meet the specific needs and developmental stages of each age group.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">How do you know what level to start my child in?</p>
+                    <p class="faq-answer">Prior to enrollment, your child will undergo a pre-enrollment assessment test along with a few verbal questions. This diagnostic test will help us understand your child’s ability and learning needs to place them at the appropriate level.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Does Leap Ahead Tutoring help?</p>
+                    <p class="faq-answer">Yes, Leap Ahead Tutoring has a proven track record of improving students' test scores and results. Our teaching methods and materials are designed to enhance mathematical thinking, problem-solving, and language skills. We have seen significant growth in both enrollment and customer satisfaction.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Does Leap Ahead Tutoring align with the school curriculum?</p>
+                    <p class="faq-answer">Absolutely. Our materials are aligned with the Australian Curriculum to cater to students from primary to senior high school. We ensure that students master each concept before moving on to the next, ensuring a solid understanding of the curriculum.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">What types of child is Leap Ahead Tutoring for?</p>
+                    <p class="faq-answer">Leap Ahead is designed for children of all abilities. Our program helps build a strong educational foundation, with tailored study loads and pacing suited to each child. We ensure mastery of each topic before advancing, helping children tackle challenges with confidence and fostering a desire to learn beyond their current grade level.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Do you have a replacement lesson if my child was absent?</p>
+                    <p class="faq-answer">Yes, we offer replacement classes for students who miss a session due to medical conditions or unforeseen circumstances. We aim to ensure that no student falls behind due to missed classes.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Disclaimer:</p>
+                    <p class="faq-answer">This FAQ Page is intended to supplement and simplify our T&C for our clients and tutors. Please contact us for more details or if you have any specific questions not covered here.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Leap Ahead Tutoring. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

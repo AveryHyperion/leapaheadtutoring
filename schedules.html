@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedules - Leap Ahead Tutoring</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1em;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #222;
+            color: #ccc;
+        }
+
+        body.dark-mode header {
+            background-color: #333;
+        }
+
+        body.dark-mode nav a {
+            background-color: #555;
+            color: white;
+        }
+
+        body.dark-mode nav a:hover {
+            background-color: #777;
+        }
+
+        body.dark-mode .section {
+            background-color: #333;
+            color: #ccc;
+        }
+
+        body.dark-mode table th {
+            background-color: #555;
+        }
+
+        body.dark-mode footer {
+            background-color: #111;
+        }
+
+        /* Login and Sign-Up Buttons */
+        #login-signup-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        #login-signup-buttons button {
+            padding: 15px 30px; /* Adjust padding to increase button size */
+            font-size: 1.2em;   /* Increase font size */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #login-signup-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login and Sign-Up Buttons -->
+    <div id="login-signup-buttons">
+        <button onclick="window.location.href='login.html'">Login</button>
+        <button onclick="window.location.href='signup.html'">Sign Up</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Leap Ahead Tutoring</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="schedules.html">Schedules</a>
+            <a href="enrichment.html">Enrichment</a>
+            <a href="acedemic.html">Acedemic Success</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <section class="section">
+            <h2>Schedules</h2>
+            <p>Here are our tutoring hours:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td>4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td>4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td>4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>9:00 am to 5:00 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>Closed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Leap Ahead Tutoring. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
