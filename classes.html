@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>After School Program - Leap Ahead Tutoring</title>
+    <title>Queries and Sign Up - Leap Ahead Tutoring</title>
     <style>
         /* Global Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'sans-serif', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
@@ -18,7 +18,7 @@
         }
 
         header {
-            background-color: #4CAF50;
+            background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
             color: white;
             text-align: center;
             padding: 1em 0;
@@ -37,6 +37,14 @@
             margin-top: 10px;
         }
 
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
         nav a {
             color: white;
             text-decoration: none;
@@ -45,82 +53,81 @@
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
             font-size: 1em;
-        }
-
-        nav a:hover {
-            background-color: #555;
-            transform: scale(1.05);
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center items vertically */
         }
 
         .container {
-            padding: 0;
-            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            padding: 40px;
-            color: #fff;
-            text-align: center;
+            z-index: 1;
+            flex: 1;
+            min-width: 300px; /* Ensures sections don't get too small */
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .section h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            margin-top: 0;
         }
 
-        .section p, .section ul {
-            font-size: 1.2em;
-            line-height: 1.6em;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        .section p {
+            margin: 10px 0;
+            line-height: 1.6;
         }
 
-        .section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .section ul li {
-            margin-bottom: 10px;
-        }
-
-        .section-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
+        form {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
         }
 
-        .section-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
+        label {
+            margin: 10px 0 5px;
         }
 
-        .section-bg {
-            background-size: cover;
-            background-position: center;
-            transition: background 0.3s ease-in-out;
+        input, textarea, select, button {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
         }
 
-        .section.bg-classes {
-            background-image: url('Images/Classes.jpg');
+        textarea {
+            resize: vertical;
         }
 
-        .section.bg-tutoring {
-            background-image: url('Images/Tutoring.jpg');
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
         }
 
-        .section.bg-prekindy {
-            background-image: url('Images/Pre-Kindy.jpg');
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .info-section {
+            margin: 20px 0;
+        }
+
+        .info-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
 
         footer {
@@ -131,7 +138,6 @@
             transition: background-color 0.3s;
         }
 
-        /* Login and Signup Button Styles */
         #login-signup-buttons {
             position: fixed;
             top: 20px;
@@ -142,28 +148,98 @@
         }
 
         #login-signup-buttons button {
-            padding: 15px 30px; /* Adjust padding to increase button size */
-            font-size: 1.2em;   /* Increase font size */
-            background-color: #4CAF50;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: black;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-family: sans-serif;
         }
 
         #login-signup-buttons button:hover {
-            background-color: #45a049;
+            background-color: #333333;
         }
 
         @media (max-width: 768px) {
-            .section h2 {
-                font-size: 2em;
+            .container {
+                flex-direction: column;
             }
+        }
 
-            .section p, .section ul {
-                font-size: 1em;
-            }
+        /* Dropdown Styles */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #333; /* Same as main nav color */
+            border-radius: 5px;
+            z-index: 999;
+            margin-top: 5px; /* Slight space below the button */
+        }
+
+        .dropdown a {
+            padding: 10px 20px;
+            display: block;
+            color: white; /* Text color for dropdown items */
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        /* Show dropdown on hover */
+        .testimonial-dropdown:hover .dropdown {
+            display: block;
+        }
+
+        .testimonial-dropdown {
+            position: relative; /* For dropdown positioning */
+        }
+
+        .class-dropdown .arrow {
+            margin-left: 10px; /* Adjust this value as needed */
+            margin-top: 0px;
+            font-size: 0.8em; /* Keep the same size */
+            transform: rotate(0deg); /* Default arrow direction */
+            transition: transform 0.3s; /* Smooth rotation */
+        }
+
+        .class-dropdown:hover .arrow {
+            transform: rotate(180deg); /* Rotate arrow on hover */
+        }
+
+        .testimonial-dropdown .arrow {
+            margin-left: 8px; /* Adjust this value as needed */
+            margin-top: 0px;
+            font-size: 0.8em; /* Keep the same size */
+            transform: rotate(0deg); /* Default arrow direction */
+            transition: transform 0.3s; /* Smooth rotation */
+        }
+
+        .testimonial-dropdown:hover .arrow {
+           transform: rotate(180deg); /* Rotate arrow on hover */
+        }
+
+        /* Show dropdown on hover */
+        .class-dropdown:hover .dropdown {
+            display: block;
+        }
+
+        .class-dropdown {
+            position: relative; /* For dropdown positioning */
+        }
+
+        .arrow {
+            margin-left: 49px; /* Space between text and arrow */
+            font-size: 0.8em; /* Smaller arrow */
+            transform: rotate(0deg); /* Default arrow direction */
+            transition: transform 0.3s; /* Smooth rotation */
+        }
+
+        .class-dropdown:hover .arrow {
+            transform: rotate(180deg); /* Rotate arrow on hover */
         }
     </style>
 </head>
@@ -180,12 +256,20 @@
         <h1>Leap Ahead Tutoring</h1>
         <nav>
             <a href="index.html">Home</a>
-            <a href="classes.html">Classes</a>
+            <div class="class-dropdown">
+                <a href="classes.html">Classes<span class="arrow">▼</span></a>
+                <div class="dropdown">
+                    <a href="enrichment.html">Enrichment</a>
+                    <a href="workshops.html">Holiday Workshops</a>
+                </div>
+            </div>
             <a href="schedules.html">Schedules</a>
-            <a href="enrichment.html">Enrichment</a>
-            <a href="workshops.html">Holiday Workshops</a>
-            <a href="acedemic.html">Acedemic Success</a>
-            <a href="testimonials.html">Testimonials</a>
+            <div class="testimonial-dropdown">
+                <a href="testimonials.html">Testimonials<span class="arrow">▼</span></a>
+                <div class="dropdown">
+                    <a href="acedemic.html">Academic Success</a>
+                </div>
+            </div>
             <a href="faq.html">FAQ</a>
             <a href="contact.html">Contact Us</a>
         </nav>
@@ -193,39 +277,82 @@
 
     <!-- Main Content -->
     <div class="container">
+        <!-- Queries Section -->
+        <section class="section">
+            <h2>Queries</h2>
 
-        <!-- Classes Section -->
-        <section class="section section-bg bg-classes">
-            <div class="section-overlay"></div>
-            <div class="section-content">
-                <h2>Classes</h2>
-                <p><bold>We run classes through the academic year. All classes are taught in a small class setting (1-3), allowing students to interact and learn from each other while still gaining personal attention from the tutor. </bold></p>
+            <!-- Contact Form -->
+            <form action="signup.html" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your name..." required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your email..." required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="6" placeholder="Write your message..." required></textarea>
+
+                <button type="submit" style="background-color: black; color: white;">Submit</button>
+            </form>
+
+            <!-- Additional Info -->
+            <div class="info-section">
+                <h3>Give Us a Shout</h3>
+                <p>Call us to reserve a spot today! Our team is ready to help answer any questions or provide further information.</p>
+                <img src="Images/Location.png" alt="Location Placeholder">
+                <p>Email: <a href="mailto:leapaheadtutoringwa@gmail.com">leapaheadtutoringwa@gmail.com</a></p>
+                <p>Number: 0433 087 262</p>
+                <p>The personal information you submit to us will be treated with the strictest confidence and in accordance with our <a href="privacy.html">Privacy Policy</a>. For more details, please review our <a href="privacy.html">Privacy Policy</a>.</p>
             </div>
         </section>
 
-        <!-- After School, Saturday, and School Holiday Tutoring Section -->
-        <section class="section section-bg bg-tutoring">
-            <div class="section-overlay"></div>
-            <div class="section-content">
-                <h2>After School, Saturday, and School Holiday Tutoring</h2>
-                <p>We are offering tutoring sessions at an affordable rate in both, English and Maths after school, Saturday and during school holidays. We design materials to meet individual learning needs for each students. We welcome all students whether you are a struggling learner or on track with peers or looking for acceleration to join our classes. </p>
-            </div>
-        </section>
+        <!-- Sign Up Section -->
+        <section class="section">
+            <h2>Sign Up</h2>
 
-        <!-- Pre-kindy Readiness Program Section -->
-        <section class="section section-bg bg-prekindy">
-            <div class="section-overlay"></div>
-            <div class="section-content">
-                <h2>Pre-kindy Readiness Program</h2>
-                <p>Our preschool program caters for children 4-5 years old. Daily or weekly lesson plans are available to promote and develop early literacy skills, Maths and kindy-prep skills. Perfect for parents who want to give their children a head start with Maths and English before they begin formal education. Children are assessed upon enrolment to gauge their skill level and knowledge upon entering our program. </p>
-            </div>
-        </section>
+            <!-- Sign Up Form -->
+            <form action="script.js" method="POST">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" placeholder="Full name..." required>
 
+                <label for="email-signup">Email Address:</label>
+                <input type="email" id="email-signup" name="email" placeholder="Your email..." required>
+
+                <label for="contact-number">Contact Number: </label>
+                <input type="tel" id="contact-number" name="contact-number" placeholder="Your contact number..." required>
+
+                <label for="school-year">Child's School Year:</label>
+                <select id="school-year" name="school-year" required>
+                    <option value="" disabled selected>Select year</option>
+                    <option value="Year 1">Year 1</option>
+                    <option value="Year 2">Year 2</option>
+                    <option value="Year 3">Year 3</option>
+                    <option value="Year 4">Year 4</option>
+                    <option value="Year 5">Year 5</option>
+                    <option value="Year 6">Year 6</option>
+                    <option value="Year 7">Year 7</option>
+                    <option value="Year 8">Year 8</option>
+                    <option value="Year 9">Year 9</option>
+                    <option value="Year 10">Year 10</option>
+                    <option value="Year 11">Year 11</option>
+                    <option value="Year 12">Year 12</option>
+                </select>
+
+                <label for="subject">Subject of Interest:</label>
+                <select id="subject" name="subject" required>
+                    <option value="" disabled selected>Select subject</option>
+                    <option value="Math">Math</option>
+                    <option value="English">English</option>
+                </select>
+
+                <button type="submit" style="background-color: black; color: white;">Sign Up</button>
+            </form>
+        </section>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Leap Ahead Tutoring. All rights reserved.</p>
+        <p>&copy; Leap Ahead Tutoring. All rights reserved.</p>
     </footer>
 
 </body>
