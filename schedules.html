@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedules - Leap Ahead Tutoring</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'sans-serif', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1em;
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center items vertically */
+        }
+
+        nav a:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+
+    .section {
+        background: #fff;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        transition: background-color 0.3s;
+    }
+
+    /* Login and Sign-Up Buttons */
+    #login-signup-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        #login-signup-buttons button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: sans-serif;
+        }
+
+        #login-signup-buttons button:hover {
+            background-color: #333333;
+        }
+
+        @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+        /* Dropdown Styles */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #333; /* Same as main nav color */
+            border-radius: 5px;
+            z-index: 999;
+            margin-top: 5px; /* Slight space below the button */
+        }
+
+        .dropdown a {
+            padding: 10px 20px;
+            display: block;
+            color: white; /* Text color for dropdown items */
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        /* Show dropdown on hover */
+        .testimonial-dropdown:hover .dropdown {
+            display: block;
+        }
+
+        .testimonial-dropdown {
+            position: relative; /* For dropdown positioning */
+        }
+
+        .class-dropdown {
+            position: relative; /* For dropdown positioning */
+        }
+
+        .class-dropdown .arrow {
+            margin-left: 10px; /* Adjust this value as needed */
+            margin-top: 0px;
+            font-size: 0.8em; /* Keep the same size */
+            transform: rotate(0deg); /* Default arrow direction */
+            transition: transform 0.3s; /* Smooth rotation */
+        }
+
+        .class-dropdown:hover .arrow {
+            transform: rotate(180deg); /* Rotate arrow on hover */
+        }
+
+        .testimonial-dropdown .arrow {
+            margin-left: 8px; /* Adjust this value as needed */
+            margin-top: 0px;
+            font-size: 0.8em; /* Keep the same size */
+            transform: rotate(0deg); /* Default arrow direction */
+            transition: transform 0.3s; /* Smooth rotation */
+        }
+
+        .testimonial-dropdown:hover .arrow {
+            transform: rotate(180deg); /* Rotate arrow on hover */
+        }
+
+        /* Show dropdown on hover */
+        .class-dropdown:hover .dropdown {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login and Sign-Up Buttons -->
+    <div id="login-signup-buttons">
+        <button onclick="window.location.href='login.html'">Login</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Leap Ahead Tutoring</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <div class="class-dropdown">
+                <a href="classes.html">Classes<span class="arrow">▼</span></a>
+                <div class="dropdown">
+                    <a href="enrichment.html">Enrichment</a>
+                    <a href="workshops.html">Holiday Workshops</a>
+                </div>
+            </div>
+            <a href="schedules.html">Schedules</a>
+            <div class="testimonial-dropdown">
+                <a href="testimonials.html">Testimonials<span class="arrow">▼</span></a>
+                <div class="dropdown">
+                    <a href="acedemic.html">Academic Success</a>
+                </div>
+            </div>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <section class="section">
+            <h2 style="font-family: sans-serif;"> Schedules</h2>
+            <p><strong style="font-family: sans-serif;"> Term Dates:</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="font-family: sans-serif;"> Term</th>
+                        <th style="font-family: sans-serif;"> Start Date</th>
+                        <th style="font-family: sans-serif;"> End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-family: sans-serif;"> 1</td>
+                        <td style="font-family: sans-serif;"> 27th Of January</td>
+                        <td style="font-family: sans-serif;"> 6th Of April</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;"> 2</td>
+                        <td style="font-family: sans-serif;"> 20th Of April</td>
+                        <td style="font-family: sans-serif;"></td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;">FIX</td>
+                        <td style="font-family: sans-serif;"> 20th Of July</td>
+                        <td style="font-family: sans-serif;"> 21st Of September</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;">FIX</td>
+                        <td style="font-family: sans-serif;"> 12th Of October</td>
+                        <td style="font-family: sans-serif;"> 14th Of December</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong style="font-family: sans-serif;"> Tutoring Hours:</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="font-family: sans-serif;"> Day</th>
+                        <th style="font-family: sans-serif;"> Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-family: sans-serif;"> Monday</td>
+                        <td style="font-family: sans-serif;"> 4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;"> Tuesday</td>
+                        <td style="font-family: sans-serif;"> 4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;"> Wednesday</td>
+                        <td style="font-family: sans-serif;"> 4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;"> Thursday</td>
+                        <td style="font-family: sans-serif;"> 4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;"> Friday</td>
+                        <td style="font-family: sans-serif;"> 4:30 pm to 7:30 pm</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;"> Saturday</td>
+                        <td style="font-family: sans-serif;"> 9:00 am to 5:00 pm</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: sans-serif;"> Sunday</td>
+                        <td style="font-family: sans-serif;"> Closed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Leap Ahead Tutoring. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

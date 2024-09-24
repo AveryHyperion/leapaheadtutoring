@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Ahead Tutoring</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #header {
+            position: fixed; /* Fix the header at the top */
+            top: 0; /* Position it at the top of the viewport */
+            left: 0; /* Align to the left */
+            width: 100%; /* Full width */
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            transition: top 0.5s ease-in-out; /* Smooth transition for showing/hiding */
+            z-index: 1000; /* Make sure it is above other content */
+        }
+
+        .hidden {
+            top: -100px; /* Move the header out of view */
+        }
+
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); /* Header gradient background */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between; /* Aligns header title and nav items */
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px; /* Adjust size as needed */
+            color: #333; /* Darker text color for contrast */
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none; /* Remove underlines from links */
+            padding: 10px 15px; /* Add padding for clickable area */
+            color: #333; /* Color for nav items */
+            position: relative; /* Required for the dropdown */
+        }
+
+        nav a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Dropdown Styles */
+        nav .class-dropdown,
+        nav .testimonial-dropdown {
+            position: relative; /* Position relative for dropdown */
+        }
+
+        nav .dropdown {
+            display: none; /* Hide dropdown by default */
+            position: absolute; /* Position dropdown relative to parent */
+            background: transparent; /* Remove background */
+            z-index: 1; /* Ensure dropdown appears above other elements */
+            left: 0; /* Align dropdown to left */
+        }
+
+        nav .class-dropdown:hover .dropdown,
+        nav .testimonial-dropdown:hover .dropdown {
+            display: block; /* Show dropdown on hover */
+        }
+        
+        nav .dropdown a {
+            display: block; /* Stack links vertically */
+            padding: 10px 15px; /* Add padding */
+            color: inherit; /* Inherit color from parent */
+        }
+
+        /* Optional: Add hover effect for dropdown items */
+        nav .dropdown a:hover {
+            text-decoration: underline; /* Underline on hover */
+            color: #3CB371;
+            transition: color 0.3s; /* Smooth transition */
+        }
+
+        /* Login Button Styles */
+        .login-button {
+            padding: 10px 15px;
+            color: #333; /* Same color as other links */
+            text-decoration: none; /* No underline */
+            margin-right: 20px;
+        }
+
+        .login-button:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .hero {
+            background: url('Images/Pen\ &\ Paper.jpg') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+            max-width: 100%;
+            opacity: 1;
+        }
+
+        .hero h1,
+        .hero p {
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            background-color: #3c83ff;
+            color: #d7edf3;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px;
+            font-family: sans-serif;
+        }
+
+        .hero button:hover {
+            background-color: #62bed9;
+            transform: scale(1.05);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .section:hover {
+            transform: scale(1.02);
+        }
+
+        /* Collage Effect */
+        .collage {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 15px;
+            padding: 10px;
+            background: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+
+        .collage .box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            overflow: hidden;
+        }
+
+        .collage .box:hover {
+            transform: scale(1.05);
+        }
+
+        .bubble {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e0f7fa;
+            border-radius: 20px;
+            color: #00796b;
+            font-size: 1em;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 10px 0;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .bubble:hover {
+            background-color: #b2ebf2;
+            transform: scale(1.05);
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .image-gallery img {
+            border-radius: 8px;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .image-gallery img {
+                max-width: 100%;
+            }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .section {
+            padding: 100px 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.5em;
+            position: relative; /* Keep h2 above shapes */
+            z-index: 2; /* Ensures text is on top */
+        }
+        .section p {
+            font-size: 1.1em;
+            color: #333;
+            position: relative; /* Keep paragraph above shapes */
+            z-index: 2; /* Ensures text is on top */
+        }
+
+        /* Decorative Shapes */
+        .decorative-shape {
+            position: absolute;
+            z-index: 1; /* Ensure shapes are behind text */
+            background: rgba(255, 255, 255, 0.5); /* Light background for shapes */
+        }
+        .circle {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        .rectangle {
+            width: 200px;
+            height: 100px;
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+            border-bottom: 130px solid rgba(255, 255, 255, 0.5);
+        }
+        .squiggle {
+            width: 200px;
+            height: 20px;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            transform: rotate(20deg);
+        }
+        .line {
+            width: 5px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transform: rotate(30deg);
+        }
+
+        /* Image Slider Styles */
+        .slider {
+            position: relative;
+            max-width: 750px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            max-width: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .slide.visible {
+            opacity: 1;
+        }
+        .slide img {
+            width: auto; /* Make images fill the slide width */
+            height: 500px; /* Maintain aspect ratio */
+            border-radius: 10px; /* Optional: add some rounding to corners */
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #16a085(255, 255, 255, 0.8);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .left-arrow {
+            left: 10px;
+        }
+        .right-arrow {
+            right: 10px;
+        }
+
+        /* Section Backgrounds */
+        #philosophy { background-color: #ffcccc; }
+        #beliefs { background-color: #ccffcc; }
+        #missions { background-color: #ccccff; }
+        #students { background-color: #ffffcc; }
+
+        /* Student Success Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .stat {
+            flex: 1; /* Allow each stat to grow and fill the space */
+            margin: 0 10px; /* Add margin to separate items */
+            min-width: 150px; /* Set a minimum width to avoid too small items */
+        }
+        .stat h3 { font-size: 3em; margin: 0; }
+        .stat p { font-size: 1.2em; margin-top: 10px; }
+
+        /* Success Story Section */
+        .success-story {
+            background-color: #2c3e50;
+            color: white;
+            position: relative;
+            padding: 100px 50px;
+            text-align: center;
+            margin: 0;
+        }
+        .success-story h2 { color: #ecf0f1; }
+        .success-story .story-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2em;
+            line-height: 1.8em;
+        }
+        .success-story::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        .success-story-content { position: relative; z-index: 1; }
+
+        /* Custom Section with Shape */
+        .custom-section {
+            background-color: #34495e;
+            padding: 50px 0;
+            position: relative;
+            margin: 0;
+        }
+        .custom-section h2 { color: #ecf0f1; }
+        .custom-section .custom-shape {
+            background-color: #ecf0f1;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-section .custom-shape img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+        .custom-section p { color: #ecf0f1; }
+
+        /* Explore Our Approach Text Style */
+        .custom-section h2 {
+            color: #ffeb3b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: right;
+            margin-right: 20px;
+        }
+        .custom-section .custom-shape img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; /* Ensure the image remains circular */
+            object-fit: cover; /* Fill the circle without distortion */
+        }
+
+        /* New Results Section */
+        .results-section {
+            background: #16a085;
+            color: white;
+            padding: 100px 50px;
+            text-align: center;
+            position: relative;
+            margin: 0;
+        }
+        .results-section h2 { font-size: 2.5em; margin-bottom: 50px; }
+        .results-section p { font-size: 1.2em; margin-bottom: 30px; }
+        .results-section .button {
+            background-color: #f39c12;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        /* Final Call to Action Section */
+        .cta-section {
+            background: #2980b9;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .cta-section h2 { font-size: 2.5em; margin-bottom: 20px; }
+        .cta-section p { font-size: 1.2em; margin-bottom: 30px; }
+        .cta-section .button {
+            background-color: #e67e22;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .cta-section .button:hover { background-color: #d35400; }
+
+        /* Image Placeholders */
+        .placeholder {
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #333;
+            position: relative;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #34495e;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .contact-section h2 { margin-bottom: 20px; }
+        .contact-section p { font-size: 1.2em; margin-bottom: 20px; }
+        .contact-section .contact-info {
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .background-image {
+            position: relative;
+            z-index: -1; /* Place it behind other content */
+            width: 100%;
+            height: auto; /* Adjust height as needed */
+        }
+
+        .overlay {
+            position: relative; /* Allow stacking */
+            z-index: 1; /* Ensure text is above the background */
+            padding: 50px; /* Add padding for text */
+            color: white; /* Text color for contrast */
+        }
+
+        .success-story {
+            background-color: #2c3e50;
+            color: white;
+            position: relative;
+            padding: 100px 50px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .success-story-content {
+            position: relative; /* Allow positioning adjustments */
+            margin-left: 20px; /* Adjust this value for left spacing */
+            text-align: left; /* Align text to the left */
+            max-width: 800px; /* Optional: limit width for better layout */
+        }
+        .story-container {
+            display: flex; /* Use flexbox for layout */
+            justify-content: flex-start; /* Align items to the start */
+            align-items: center; /* Center items vertically */
+            max-width: 1200px; /* Adjust max-width as needed */
+            margin: 0 auto; /* Center container */
+        }
+
+        .story-text-container {
+            flex: 1; /* Allow this container to take up available space */
+            padding-right: 20px; /* Add space to the right */
+        }
+
+        .image-placeholder-container {
+            display: flex; /* Align image placeholders in a row */
+            gap: 20px; /* Space between placeholders */
+            position: relative; /* Allow absolute positioning for children */
+        }
+
+        .image-placeholder {
+            background-color: #ecf0f1; /* Placeholder background color */
+            border-radius: 50%; /* Make it circular */
+            width: 100px; /* Default size of the smaller placeholder */
+            height: 100px; /* Default size of the smaller placeholder */
+            position: relative; /* Allow positioning relative to its normal position */
+            right: -500px;
+            transform: translateX(-400px); /* Adjust position further right */
+            transform: translateY(-300px);
+        }
+
+        .large-placeholder {
+            width: 150px; /* Size of the larger placeholder */
+            height: 150px; /* Size of the larger placeholder */
+            position: absolute; /* Allow absolute positioning */
+            right: -500px; /* Position to the right */
+            transform: translateX(-800px); /* Adjust position further right */
+            transform: translateY(150px);
+        }
+
+        .image-placeholder:nth-child(2) { /* Select the smaller placeholder */
+            position: absolute; /* Allow absolute positioning */
+            top: 0; /* Align to the top */
+            left: 200px; /* Align to the left */
+            transform: translateY(-200px); /* Adjust position upwards */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <h1>Leap Ahead Tutoring</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <div class="class-dropdown">
+                <a href="classes.html">Classes</a>
+                <div class="dropdown">
+                    <a href="enrichment.html">Enrichment</a>
+                    <a href="workshops.html">Holiday Workshops</a>
+                </div>
+            </div>
+            <a href="schedules.html">Schedules</a>
+            <div class="testimonial-dropdown">
+                <a href="testimonials.html">Testimonials</a>
+                <div class="dropdown">
+                    <a href="acedemic.html">Academic Success</a>
+                </div>
+            </div>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html" class="login-button">Login</a> <!-- Added Login button -->
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero" style= "color: white; text-align: center; padding: 50px 20px;">
+        <h1 style="color: #FFFFFF;"> Your Path to Success</h1>
+        <p style="color: #FFFFFF;"> Personalized tutoring to help your child excel.</p>
+        <button onclick="window.location.href='contact.html'" style="font-family: sans-serif;">Join Us Now!</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Our Philosophy Section -->
+        <section id="philosophy1" class="collage">
+            <div class="decorative-shapes">
+                <div class="decorative-shape circle" style="top: -5px; left: -5px; background: rgba(173, 216, 230, 0.7);"></div> <!-- Light Blue -->
+            <div class="box" style="background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);; padding: 20px; border-radius: 10px;">
+                <h2 style="font-family: sans-serif; color: white;"> Our Philosophy </h2>
+                <p style="color: white; font-family: sans-serif;"> Foundation building:</p>
+                <ul>
+                    <li style="color: white; font-family: sans-serif;">  Understand the concepts and its applications</li>
+                    <li style="color: white; font-family: sans-serif;">  Develop and enhance critical thinking skills and problem-solving strategies</li>
+                    <li style="color: white; font-family: sans-serif;">  Creative methods to make Maths and English fun!</li>
+                    <li style="color: white; font-family: sans-serif;">  NAPLAN exam preparation</li>
+                    <li style="color: white; font-family: sans-serif;">  P.E.A.C. Program</li>
+                    <li style="color: white; font-family: sans-serif;">  GATE exam preparation</li>
+                    <li style="color: white; font-family: sans-serif;">  Australian Maths Competition (AMC)</li>
+                    <li style="color: white; font-family: sans-serif;">  ICAS exam preparation</li>
+                    <li style="color: white; font-family: sans-serif;">  ATAR exam preparation</li>
+                </ul>
+                <button onclick="location.href='#philosophy'" class="bubble">Learn More</button>
+            </div>
+        </section>
+        <!-- Our Beliefs Section -->
+        <section id="beliefs1" class="collage">
+            <div class="decorative-shape circle" style="top: -30px; left: -10px; background: rgba(173, 216, 230, 0.7);"></div> <!-- Light Blue -->
+            <div class="box" style="background: linear-gradient(135deg, #56ccf2 0%, #2f80ed 100%); padding: 20px; border-radius: 10px;">
+                <h2 style="font-family: sans-serif; color: white;"> Our Beliefs </h2>
+                <p><strong style="color: white; font-family: sans-serif;"> 2 Types Of Children</strong></p>
+                <ul>
+                    <li style="color: white; font-family: sans-serif;">  <bold>LOVE</bold> Learning</li>
+                    <li style="color: white; font-family: sans-serif;">  <bold>WILL LOVE</bold> Learning</li>
+                </ul>
+                <div class="bubble" style="background-color: #476f95; padding: 10px; border-radius: 10px; font-family: sans-serif;">
+                    <p style="color: white; font-family: sans-serif;">  We believe that every child is talented! All we need are show them the way.</p>
+                </div>
+                <button onclick="location.href='#beliefs'" class="bubble">Learn More</button>
+            </div>
+        </section>
+
+        <!-- Our Mission Section -->
+        <section id="mission1" class="collage">
+            <div class="decorative-shape circle" style="top: 90px; left: -15px; background: rgba(216, 191, 216, 0.7);"></div> <!-- Thistle -->
+            <div class="decorative-shape line" style="bottom: 50px; right: 80px; background-color: rgba(255, 250, 205, 0.7);"></div> <!-- Light Lemon Chiffon -->
+            <div class="decorative-shape squiggle" style="top: 70px; left: 20px;"></div> <!-- Light Lavender -->
+            <div class="box" style="background: linear-gradient(135deg, #7aabf6 0%, #a2d1e9 100%); padding: 20px; border-radius: 10px;">
+                <h2 style="font-family: 'sans-serif', sans-serif; color: white;"> Our Mission </h2>
+                <p style="color: white; font-family: sans-serif;">  Our mission is to transform the way kids understand and appreciate Maths and learning English in a fun way. Our commitment is to form lifelong learning experiences allowing every child to become independent, self-confident and inquisitive learners. We aim to develop your child a love for Maths and English with positive learning attitudes.</p>
+                <button onclick="location.href='#missions'" class="bubble">Discover More</button>
+            </div>
+        </section>
+
+        <!-- Our Students Section --> 
+        <section id="students1" class="collage">
+            <div class="decorative-shape circle" style="top: -20px; left: -20px; background: rgba(255, 224, 204, 0.7);"></div> <!-- Light Coral -->
+            <div class="decorative-shape rectangle" style="top: 400px; right: -10px; background: rgba(173, 216, 230, 0.7);"></div> <!-- Light Blue -->
+            <div class="box" style="background: linear-gradient(135deg, #f09ab0 0%, #8ca3d4 100%); padding: 20px; border-radius: 10px;">
+                <h2 style="font-family: 'sans-serif', sans-serif; color: white;"> Our Students </h2>
+                <p style="color: white; font-family: sans-serif;"> We celebrate diversity in learning. Our students come from various backgrounds and levels, but they all share a common goal — to improve and succeed. We create an inclusive and supportive environment for every learner.</p>
+                <ul>
+                    <li style="color: white; font-family: sans-serif;"> Tailored programs for each grade level</li>
+                    <li style="color: white; font-family: sans-serif;"> Focus on individual strengths and areas of improvement</li>
+                    <li style="color: white; font-family: sans-serif;"> Cultivate a passion for learning</li>
+                </ul>
+                <button onclick="window.location.href='#students'" class="bubble">Meet Our Students</button>
+            </div>
+        </section>
+    </div>
+</head>
+<body>
+
+    <div class="section" id="philosophy">
+        <div class="decorative-shape circle" style="top: 20%; left: 10%;"></div>
+        <div class="decorative-shape rectangle" style="top: 30%; left: 80%;"></div>
+        <div class="decorative-shape triangle" style="top: 60%; left: 45%;"></div>
+        <div class="decorative-shape squiggle" style="top: 40%; right: 15%;"></div>
+        <h2 style="font-family: sans-serif;">  Our Ideologies </h2>
+        <p>We believe in fostering a love of learning in every student.</p>
+    </div>
+
+    <div class="section" id="beliefs">
+        <div class="decorative-shape line" style="top: 10%; left: 5%;"></div>
+        <div class="decorative-shape circle" style="top: 70%; right: 10%;"></div>
+        <h2 style="font-family: sans-serif;">  Our Perspectives</h2>
+        <p>We believe that every child is unique and has the potential to excel.</p>
+    </div>
+
+    <div class="section" id="missions">
+        <div class="decorative-shape rectangle" style="top: 20%; left: 15%;"></div>
+        <div class="decorative-shape triangle" style="top: 50%; right: 10%;"></div>
+        <div class="decorative-shape squiggle" style="top: 30%; right: 20%;"></div>
+        <h2 style="font-family: sans-serif;">  Our Goal</h2>
+        <p>Our mission is to provide personalized tutoring services that cater to each child's needs.</p>
+    </div>
+
+    <div class="section" id="students">
+        <div class="decorative-shape circle" style="top: 10%; left: 5%;"></div>
+        <div class="decorative-shape line" style="top: 40%; right: 15%;"></div>
+        <h2 style="font-family: sans-serif;">  Our Students</h2>
+        <p>We empower our students to reach their full potential through tailored support.</p>
+    </div>
+
+    <div class="stats-section">
+        <div class="stat">
+            <h3>95%</h3>
+            <p>Improvement In Student Grades</p>
+        </div>
+        <div class="stat">
+            <h3>180+</h3>
+            <p>Students Enrolled</p>
+        </div>
+        <div class="stat">
+            <h3>97%</h3>
+            <p>Referred by Parents</p>
+        </div>
+        <div class="stat">
+            <h3>10+</h3>
+            <p>Years of Experience</p>
+        </div>
+    </div>
+
+    <div class="success-story">
+        <div class="success-story-content">
+            <div class="story-container">
+                <div class="story-text-container">
+                    <h2 style="font-family: sans-serif; margin-top: -50px;"> Success Stories</h2>
+                    <p class="story-text" style="text-align: left;">
+                        Sarah came to us struggling in math, but through our personalized approach, she not only improved her grades but also gained confidence in her abilities. Our experienced tutors worked closely with her, identifying her unique learning style and adapting the curriculum to meet her needs. This tailored approach allowed Sarah to tackle complex math concepts with ease, transforming her anxiety into enthusiasm. 
+    
+                        Over time, Sarah developed a deeper understanding of the material, participating actively in class and collaborating with her peers. She learned to view challenges as opportunities to grow rather than obstacles. With consistent effort and support, Sarah's grades began to reflect her hard work, and she achieved a significant improvement, moving from a C to an A in just one semester.
+    
+                        Not only did her academic performance soar, but her self-esteem blossomed. She started participating in extracurricular activities, including math competitions, which further fueled her passion for the subject. Today, Sarah not only excels in math but has also developed a love for learning that extends beyond the classroom. 
+    
+                        Her success story is a testament to the power of personalized education and the difference it can make in a child's life. We are proud to have been part of her journey and continue to support her as she navigates her educational path with confidence and joy.
+                    </p>
+                </div>
+                <div class="image-placeholder-container">
+                    <div class="image-placeholder large-placeholder"></div> <!-- Larger placeholder for image -->
+                    <div class="image-placeholder large-placeholder"></div> <!-- Larger placeholder for image -->
+                    <div class="image-placeholder"></div> <!-- Smaller placeholder for image -->
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <div class="results-section" style="background: linear-gradient(135deg, rgba(54, 162, 235, 0.8), rgba(173, 216, 230, 0.8));">
+        <h2 style="font-family: sans-serif; margin-top: -20px;">  Recent Results</h2>
+        <p>Discover the success our students have achieved.</p>
+        <div class="slider">
+            <div class="slides">
+                <div class="slide visible">
+                    <img src="https://via.placeholder.com/750x500" alt="Image 1" class="placeholder">
+                </div>
+                <div class="slide">
+                    <img src="https://via.placeholder.com/750x500" alt="Image 2" class="placeholder">
+                </div>
+                <div class="slide">
+                    <img src="https://via.placeholder.com/750x500" alt="Image 3" class="placeholder">
+                </div>
+            </div>
+            <button class="arrow left-arrow">&lt;</button>
+            <button class="arrow right-arrow">&gt;</button>
+        </div>
+        <a href="acedemic.html" class="button" style="margin-top: 50px;">Learn More</a>
+
+        <!-- Decorative Shapes -->
+        <div class="decorative-shape circle" style="position: absolute; top: 5%; left: 5%; width: 120px; height: 120px; border-radius: 50%; background: rgba(255, 182, 193, 0.6); transform: rotate(30deg);"></div>
+        <div class="decorative-shape rectangle" style="position: absolute; top: 20%; right: 10%; width: 160px; height: 90px; background: rgba(144, 238, 144, 0.6); transform: rotate(-15deg);"></div>
+        <div class="decorative-shape square" style="position: absolute; top: 50%; right: 5%; width: 100px; height: 100px; background: rgba(255, 200, 0, 0.6); transform: rotate(10deg);"></div>
+        <div class="decorative-shape oval" style="position: absolute; top: 80%; right: 5%; width: 100px; height: 100px; background: rgba(232, 110, 214, 0.6); transform: rotate(10deg);"></div>
+        <div class="decorative-shape diamond" style="position: absolute; top: 50%; left: 10%; width: 80px; height: 80px; background: rgba(173, 216, 230, 0.6); transform: rotate(60deg);"></div>
+        <div class="decorative-shape rectangle" style="position: absolute; top: 80%; left: 10%; width: 80px; height: 80px; background: rgba(195, 226, 115, 0.6); transform: rotate(-15deg);"></div>
+    </div>
+
+    <div class="cta-section">
+        <h2 style="font-family: sans-serif; margin-top: -20px;">Join Us Today!</h2>
+        <p>Sign up for our tutoring services and watch your child thrive.</p>
+        <a href="contact.html" class="button">Get Started</a>
+    </div>
+
+    <div class="contact-section">
+        <h2 style="font-family: sans-serif; margin-top: -20px;"> Contact Us</h2>
+        <p>If you have any questions or would like to learn more, feel free to reach out!</p>
+        <div class="contact-info">
+            Email: <a href="mailto:info@leapaheadtutoring.com">info@leapaheadtutoring.com</a>
+        </div>
+        <div class="contact-info">Phone: (123) 456-7890</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Leap Ahead Tutoring. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+    
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                header.style.top = '-100px'; // Adjust based on header height
+                header.style.opacity = '0'; // Fade out
+            } else {
+                // Scrolling up
+                header.style.top = '0'; // Show header
+                header.style.opacity = '1'; // Fade in
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
+        });
+    </script>
+
+    <script src="scroll.js"></script>
+</body>
+</html>
